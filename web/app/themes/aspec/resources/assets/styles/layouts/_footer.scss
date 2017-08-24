@@ -1,0 +1,26 @@
+// Footer
+.footer {
+  background: $bg-grey;
+
+  padding: 3em 0;
+
+  .social {
+    @extend .col-md-4;
+
+    .icons {
+      font-size: 3em;
+    }
+    .facebook {
+      @extend .fa, .fa-facebook-square;
+    }
+    .linkedin {
+      @extend .fa, .fa-linkedin-square;
+    }
+  }
+  .footer-menu {
+    @extend .col-md-4;
+  }
+  .business-info {
+    @extend .col-md-4;
+  }
+}

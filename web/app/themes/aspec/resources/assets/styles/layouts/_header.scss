@@ -1,0 +1,210 @@
+// Header
+.headerTextShadow {
+  color: rgba(255, 255, 255, 0.91);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.colour-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse farthest-corner at center center, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.85) 100%) repeat scroll 0% 0%;
+  opacity: 0.5;
+  transition: opacity 2000ms;
+  pointer-events: none;
+}
+
+.header-container {
+  &:hover {
+    .carousel-inner {
+      filter: blur(15px);
+      transform: scale(1.1);
+    }
+    .colour-overlay {
+      opacity: 0.8;
+    }
+  }
+}
+
+.slideshow-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+
+  .carousel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+
+    .carousel-inner {
+      //background-color: green;
+      width: 100%;
+      height: 100%;
+      transition: 1s all ease;
+
+      flex-grow: 1;
+      > .carousel-item {
+        width: 100%;
+        height: 100%;
+        //background-image: url("http://via.placeholder.com/1920x800");
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+    }
+  }
+
+  .content-overlay {
+    width: 100%;
+    padding: 10vw 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      @extend .row;
+
+      h1 {
+        @extend .col, .col-lg-4, .headerTextShadow;
+        margin-bottom: 5vw;
+        font-size: 3rem;
+
+        @include media-breakpoint-down(sm) {
+          text-align: center;
+        }
+      }
+    }
+
+    .container.about {
+      @include media-breakpoint-down(sm) {
+        position: absolute;
+        bottom: 2em;
+        width: 100%;
+      }
+    }
+
+    .about-links {
+      @extend .row;
+      display: flex;
+      align-items: center;
+
+      > div {
+        @extend .col-4, .px-2, .py-1, .p-md-1;
+        display: flex;
+        flex-direction: column;
+
+        > a {
+          @extend .p-3;
+          flex-grow: 1;
+
+          @include media-breakpoint-up(md) {
+            background-color: rgba(231, 234, 246, 0.9);
+            border-radius: 3px;
+
+            &:hover {
+              background-color: rgba(236, 239, 251, 0.95);
+              text-decoration: none;
+            }
+          }
+
+          @include media-breakpoint-down(sm) {
+            padding: 0 !important;
+          }
+
+          > div {
+            @extend .row;
+
+            > .thumbnail-container {
+              @extend .col-4, .pr-0, .col-md-12, .pr-md-3, .pb-md-3, .col-lg-5, .pr-lg-0, .pb-lg-0;
+              //background: orange;
+              display: flex;
+              flex-direction: column;
+              height: 100px;
+
+              .thumbnail {
+                //background: red;
+                flex-grow: 1;
+                background-size: cover;
+                background-position: center center;
+                width: 100%;
+              }
+
+              @include media-breakpoint-down(sm) {
+                display: none;
+              }
+            }
+
+            > .info {
+              @extend .col;
+              color: $body-text;
+
+              h2 {
+                font-size: 1.1rem;
+
+                @include media-breakpoint-down(sm) {
+                  text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+                  color: white;
+                  text-align: center;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+
+              span {
+                font-size: 0.9rem;
+
+                @include media-breakpoint-down(sm) {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact .pageHeader {
+  background-position: 0 0;
+}
+.pageHeader {
+  position: relative;
+  background: black;
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .headerContent {
+    @extend .py-5;
+
+    color: white;
+    text-align: center;
+
+    .headerTitle {
+      @extend .headerTextShadow;
+
+      font-size: 2.5rem;
+      font-weight: 400;
+      font-family: texgyreadventorregular;
+      text-transform: lowercase;
+
+      @include media-breakpoint-up(sm) {
+        font-size: 3rem;
+      }
+    }
+  }
+}

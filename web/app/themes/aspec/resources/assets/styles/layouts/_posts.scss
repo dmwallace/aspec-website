@@ -1,0 +1,56 @@
+// Posts
+
+.excerpts {
+  @extend .row;
+
+  .post {
+    @extend .col-12, .col-sm-12, .col-md-6, .col-lg-4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    a {
+      color: $body-text;
+    }
+
+    &:hover {
+      background: white;
+
+      .excerptThumbnail {
+        //transform: scale(1.01);
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+      }
+      .entry-title {
+        text-decoration: none;
+        color: $brand-primary;
+      }
+    }
+
+    .updated {
+      font-size: 0.9em;
+      color: $lighter-text;
+      display: block;
+    }
+
+    .excerptThumbnail {
+      transition: 100ms all;
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      margin-top: 0.5em;
+      height: 225px;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    .entry-title {
+      margin-top: 0.5em;
+      font-size: 1.6em;
+      font-weight: 500;
+    }
+
+    .read-more-link {
+      color: $body-text;
+    }
+  }
+}
+

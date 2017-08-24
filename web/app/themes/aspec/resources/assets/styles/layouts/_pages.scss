@@ -1,0 +1,480 @@
+// Pages
+main {
+  @extend .py-4, .py-md-5;
+}
+
+.about_sections_mobile {
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+
+  .section {
+    margin: 4em 0;
+
+    > * {
+      margin: 2em 0;
+    }
+
+    .heading {
+      @extend .row;
+      padding: 5em 1em;
+      background-size: cover;
+      background-position: center center;
+      position: relative;
+
+      &::after {
+        @extend .darkGradientTtb;
+        opacity: 0.8;
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      h2 {
+        @extend .headerTextShadow;
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.3;
+        text-transform: lowercase;
+        font-family: texgyreadventorregular;
+        font-weight: 600;
+        font-size: 2.5em;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .content {
+      text-align: center;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        margin: 1em;
+      }
+    }
+    .download_link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+
+      .icon {
+        @extend .fa, .fa-download;
+        font-size: 3em;
+      }
+    }
+  }
+}
+
+.about_post_content {
+  margin: 2em 0 4em;
+
+  @include media-breakpoint-up(lg) {
+    column-count: 2;
+    column-gap: 4em;
+  }
+}
+
+.about_sections {
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+
+  @extend .row;
+
+  .section_container {
+    @extend .col-xl, .p-2;
+    display: flex;
+    flex-direction: column;
+    transition: all 200ms;
+
+    @include media-breakpoint-up(xl) {
+      &:hover {
+        @extend .col-xl-7;
+
+        .content_container {
+          display: flex !important;
+        }
+
+        .content_box {
+          background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+      }
+    }
+  }
+
+  .section_container_inner {
+    flex-grow: 1;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-radius: 3px;
+
+    &::after {
+      @extend .darkGradientLtr;
+      opacity: 0.6;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 0.5em;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+
+    .content_box {
+      flex-grow: 1;
+      padding: 1em;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      @include media-breakpoint-up(xl) {
+        background-color: transparent;
+      }
+
+      .inner {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        justify-content: flex-start;
+
+        .heading {
+          width: 100px;
+
+          > h2 {
+            @extend .headerTextShadow;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            white-space: nowrap;
+            transform: rotate(-90deg);
+            transform-origin: left bottom;
+            font-family: texgyreadventorregular;
+            font-weight: 900;
+            text-transform: lowercase;
+            font-size: 3em;
+            z-index: 2;
+          }
+        }
+
+        .content_container {
+          width: calc(100% - 100px);
+
+          @include media-breakpoint-up(xl) {
+            position: absolute;
+            top: 0;
+            left: 100px;
+            width: 500px;
+            height: 550px;
+            display: none;
+          }
+
+          @extend .headerTextShadow;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .content {
+            font-size: 1.3rem;
+            font-weight: 400;
+            li {
+              margin-bottom: 0.5em;
+            }
+          }
+          .download_link_container {
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            .download_link {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-decoration: none;
+              color: white;
+
+              .icon {
+                @extend .fa, .fa-download;
+                font-size: 2.5em;
+              }
+
+              span {
+                font-weight: 400;
+                font-size: 1.1em;
+              }
+
+              &:hover {
+                color: $brand-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact {
+  .main > * {
+    margin-top: 10em;
+    margin-bottom: 10em;
+  }
+
+  .sectionHeading {
+    font-family: texgyreadventorregular;
+    font-size: 3em;
+    color: $brand-primary;
+    text-align: center;
+  }
+  .contactInfo {
+    @extend .row;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    max-width: 40em;
+    margin: 0 auto;
+    background: white;
+    border-radius: 3px;
+    margin-top: -100px;
+    padding: 1em;
+
+    &:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    div.leftCol {
+      @extend .col-md-4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5em 0;
+
+      img {
+        max-width: 150px;
+      }
+
+      .heading {
+        margin: 1em 0;
+        font-size: 2em;
+      }
+
+      .social {
+        .icons {
+          font-size: 4em;
+        }
+        .facebook {
+          @extend .fa, .fa-facebook-square;
+        }
+        .linkedin {
+          @extend .fa, .fa-linkedin-square;
+        }
+      }
+    }
+    .content {
+      @extend .col-md-8;
+
+      > * {
+        margin: 0.5em 0;
+        border-bottom: 1px solid $brand-secondary;
+        display: flex;
+
+        .icon {
+          width: 94px;
+          flex-basis: 94px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2.5em;
+          line-height: 1;
+          background: $brand-secondary;
+          color: $brand-primary;
+        }
+        .info {
+          width: calc(100% - 94px);
+          padding-top: 1em;
+          padding-left: 1em;
+        }
+      }
+
+      .postal i {
+        @extend .fa, .fa-map-marker;
+      }
+      .phone i {
+        @extend .fa, .fa-phone;
+      }
+      .email i {
+        @extend .fa, .fa-envelope;
+      }
+    }
+  }
+
+  .offices {
+    @extend .row, .my-5;
+
+    .state.count1 {
+      @extend .col-lg-3;
+    }
+    .state.count2 {
+      @extend .col-lg-6;
+    }
+
+    .state {
+      @extend .py-4;
+      text-align: center;
+
+      @include media-breakpoint-up(lg) {
+        &:not(:last-child) {
+          border-right: 1px solid rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      h2 {
+        font-size: 1.7em;
+      }
+
+      ul {
+        margin: 1em 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          margin: 0.5em 0;
+        }
+      }
+    }
+
+    a.address {
+      cursor: pointer;
+
+       &:hover {
+         color: $brand-primary;
+       }
+    }
+
+    .officeList {
+      @extend .row;
+
+      .office {
+        @extend .col-lg;
+      }
+    }
+  }
+
+  #officeLocationsMap {
+    width: 100%;
+    height: 600px;
+  }
+
+  .contactForm {
+    .formContainer {
+      .wpforms-container {
+        @extend .my-5;
+        position: relative;
+        padding: 1em;
+        background: white;
+        margin-left: -15px;
+        margin-right: -15px;
+
+        @include media-breakpoint-up(sm) {
+          padding: 1em 2em;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+          border-radius: 3px;
+        }
+      }
+      .wpforms-container::after {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+
+        content: "";
+        display: block;
+        width: 140px;
+        height: 140px;
+        background-size: 100px 100px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: absolute;
+        top: 2em;
+        right: 2em;
+        padding: 1.5em 1em;
+        border: 1px dashed rgba(0, 0, 0, 0.3);
+      }
+
+      .wpforms-confirmation-container-full {
+        @extend .my-5;
+        text-align: center;
+      }
+    }
+  }
+
+  .links {
+    @extend .row, .py-5, .px-1, .my-5;
+    background: white;
+
+    @include media-breakpoint-up(sm) {
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+    }
+
+    > * {
+      @extend .col-md-4, .p-4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+
+      img {
+        max-width: 100%;
+        max-height: 150px;
+      }
+    }
+  }
+}
+
+.single {
+  .featuredImage {
+    @extend .my-5, .row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  blockquote {
+    text-align: center;
+    font-weight: bold;
+    font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
+    font-style: italic;
+    margin: 0 auto;
+    max-width: 30em;
+  }
+}

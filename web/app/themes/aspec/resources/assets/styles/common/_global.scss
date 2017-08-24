@@ -1,0 +1,428 @@
+// Base styles
+body.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: $body-text;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: $brand-primary;
+  }
+}
+
+body {
+  background-color: white; //rgba(0, 0, 0, 0.01);
+
+  @include media-breakpoint-down(sm) {
+    padding-top: $navBarHeightMobile;
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+ul.no-style {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-links {
+  @extend .row;
+
+  > * {
+    @extend .col-6;
+    text-transform: uppercase;
+  }
+
+  .nav-previous {
+    text-align: right;
+  }
+}
+
+.nav-primary-mobile {
+  @extend .px-3;
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+
+  &.nav-up {
+    top: -$navBarHeightMobile;
+    opacity: 0;
+  }
+
+  .mainBar {
+    height: $navBarHeightMobile;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    position: relative;
+    margin: 0 -15px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    padding: 0 15px;
+
+    button.menuToggle {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      .menu {
+        @extend .fa, .fa-bars;
+        font-size: 1.5em;
+        color: $brand-primary;
+      }
+    }
+    .logo {
+      height: 2em;
+    }
+
+    button.menuToggle.down {
+      opacity: 0.5;
+    }
+
+    button.menuToggle.close {
+      .menu {
+        @extend .fa, .fa-times;
+      }
+    }
+  }
+
+  .drawer.open {
+    transform: translate(0, 0);
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+    padding-top: calc(48px + 15px);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    background: white;
+    overflow-y: scroll;
+    transform: translate(-100%, 0);
+    transition: 200ms all;
+
+    .nav {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0;
+
+      li {
+        margin: 1rem 0;
+
+        a {
+          color: $brand-primary;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+body.single .nav-primary {
+  position: static;
+
+  &::after {
+    display: none;
+  }
+
+  .mainBar {
+    background: white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav {
+    li {
+      a {
+        color: $body-text;
+        text-shadow: none;
+      }
+    }
+  }
+
+  .logo {
+    filter: none;
+  }
+
+  .searchBar {
+    border-color: $body-text;
+
+    input,
+    i {
+      color: $body-text;
+    }
+  }
+}
+
+.nav-primary {
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+
+  .mainBar {
+    background: rgba(0, 0, 0, $mainNavBackgroundOpacity);
+  }
+  &::after {
+    content: "";
+    display: block;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, $mainNavBackgroundOpacity) 0%, rgba(0, 0, 0, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    width: 100%;
+    height: 100px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logoContainer {
+    background: transparent;
+    border-radius: 50%;
+    //margin: 1rem;
+
+    .logo {
+      height: 48px;
+      margin: 0.5em;
+      position: relative;
+      //top: -0.25rem;
+      width: auto;
+      filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  .nav {
+    display: flex;
+
+    li {
+      display: flex;
+
+      a {
+        border-radius: 3px;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        font-weight: 500;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        color: white;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}
+
+.toolBar {
+  display: flex;
+  align-items: center;
+}
+
+body.single i.signUp {
+  color: $body-text;
+}
+i.signUp {
+  @extend .fa, .fa-envelope-o, .mx-3;
+  font-size: 2em;
+  color: white;
+  position: relative;
+  cursor: pointer;
+
+  .badge {
+    position: absolute;
+    top: -0.4em;
+    right: -0.4em;
+    background: $brand-primary;
+    font-size: 0.4em;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+  }
+}
+
+.searchBar {
+  border: 1px solid white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  padding: 0.2em 0.5em;
+  margin: 0 1em;
+
+  @include media-breakpoint-up(lg) {
+    input {
+      width: 230px;
+    }
+  }
+
+  @include media-breakpoint-only(md) {
+    input {
+      width: 80px;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin: 0;
+    border-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+
+    input {
+      flex-grow: 1;
+      color: $body-text;
+    }
+
+    i {
+      color: $brand-primary;
+    }
+  }
+
+  > * {
+    background: transparent;
+    color: white;
+    border: none;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  i.search {
+    @extend .fa, .fa-search;
+  }
+  i.search.close {
+    @extend .fa, .fa-times;
+  }
+}
+
+.darkGradientLtr {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0+100;Neutral+Density */
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=1); /* IE6-9 */
+}
+
+.darkGradientTtb {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0+100;Neutral+Density */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=0); /* IE6-9 */
+}
+
+.crp_related {
+  @extend .my-5;
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    li {
+      position: relative;
+      width: 150px;
+      margin: 10px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
+      transition: 100ms all;
+
+      &:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .crp_title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+#signUpModal {
+  .modal-footer {
+    display: flex;
+    flex-direction: column;
+
+    form {
+      width: 100%;
+      display: flex;
+
+      input#email {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      input#subscribeButton {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    div#message {
+      width: 100%;
+      margin: 1em 0 0;
+      text-align: center;
+    }
+  }
+}
